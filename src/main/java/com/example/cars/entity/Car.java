@@ -7,9 +7,9 @@ import javax.persistence.*;
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_chassi", unique = true, nullable = false)
-    private Long idChassi;
+    private long idChassi;
     @Column(name = "name")
     private String name;
     @Column(name = "brand")
@@ -19,11 +19,11 @@ public class Car {
     @Column(name = "fabrication_year")
     private String fabricationYear;
 
-    public Long getIdChassi() {
+    public long getIdChassi() {
         return idChassi;
     }
 
-    public void setIdChassi(Long idChassi) {
+    public void setIdChassi(long idChassi) {
         this.idChassi = idChassi;
     }
 
@@ -54,8 +54,29 @@ public class Car {
     public String getFabricationYear() {
         return fabricationYear;
     }
-    
+
     public void setFabricationYear(String fabricationYear) {
         this.fabricationYear = fabricationYear;
+    }
+    public Car(){
+
+    }
+    public Car(long idChassi, String name, String brand, String color, String fabricationYear) {
+        this.idChassi = idChassi;
+        this.name = name;
+        this.brand = brand;
+        this.color = color;
+        this.fabricationYear = fabricationYear;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "idChassi=" + idChassi +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", color='" + color + '\'' +
+                ", fabricationYear='" + fabricationYear + '\'' +
+                '}';
     }
 }

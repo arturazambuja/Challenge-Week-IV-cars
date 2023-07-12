@@ -1,18 +1,37 @@
 package com.example.cars.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.istack.*;
+
+import javax.validation.constraints.NotBlank;
 
 public class CarRequestDTO {
 
+    public CarRequestDTO(){
+
+    }
+    public CarRequestDTO(Long idChassi, String name, String brand, String color, String fabricationYear) {
+        this.idChassi = idChassi;
+        this.name = name;
+        this.brand = brand;
+        this.color = color;
+        this.fabricationYear = fabricationYear;
+    }
     private Long idChassi;
+
+    @NotBlank(message = "Name cannot be empty")
     @JsonProperty("name")
     private String name;
+    @NotBlank(message = "Brand cannot be empty")
     @JsonProperty("brand")
     private String brand;
+    @NotBlank(message = "Color cannot be empty")
     @JsonProperty("color")
     private String color;
+    @NotBlank(message = "Fabrication year cannot be empty")
     @JsonProperty("fabrication_year")
     private String fabricationYear;
+
 
     public Long getIdChassi() {
         return idChassi;
@@ -52,5 +71,16 @@ public class CarRequestDTO {
 
     public void setFabricationYear(String fabricationYear) {
         this.fabricationYear = fabricationYear;
+    }
+
+    @Override
+    public String toString() {
+        return "CarRequestDTO{" +
+                "idChassi=" + idChassi +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", color='" + color + '\'' +
+                ", fabricationYear='" + fabricationYear + '\'' +
+                '}';
     }
 }
