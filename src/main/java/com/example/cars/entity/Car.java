@@ -1,6 +1,7 @@
 package com.example.cars.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Cars")
@@ -10,13 +11,17 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_chassi", unique = true, nullable = false)
     private long idChassi;
-    @Column(name = "name")
+    @NotBlank(message = "Name cannot be empty")
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "brand")
+    @NotBlank(message = "Brand cannot be empty")
+    @Column(name = "brand", nullable = false)
     private String brand;
-    @Column(name = "color")
+    @NotBlank(message = "Color cannot be empty")
+    @Column(name = "color", nullable = false)
     private String color;
-    @Column(name = "fabrication_year")
+    @NotBlank(message = "Fabrication Year cannot be empty")
+    @Column(name = "fabrication_year", nullable = false)
     private String fabricationYear;
 
     public long getIdChassi() {
